@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProduitController;
-use App\Http\Controllers\InfoController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,9 +18,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/produit', [ProduitController::class, 'produit'])->name('produits.produit');
-Route::get('/infos', [InfoController::class, 'info'])->name('infos.info');
-Route::get('/contact', [ContactController::class, 'contact'])->name('contacts.contact');
+Route::controller(PageController::class)->group(function () {
+    Route::get('/produit', [PageController::class, 'produit'])->name('page.produit');
+    Route::get('/infos', [PageController::class, 'info'])->name('page.info');
+    Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
+});
+
 
 
 require __DIR__.'/auth.php';
