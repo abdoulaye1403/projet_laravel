@@ -8,16 +8,16 @@ class PageController extends Controller
 {
     public function produit()
     {
-        return view('produits');
+        return view('page/produits');
     }
 
     public function info()
     {
-        return view('infos');
+        return view('page/infos');
     }
 
     public function contact()
     {
-        return view('contact');
+        return view('page/contact');
     }
 }
